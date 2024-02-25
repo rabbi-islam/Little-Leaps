@@ -5,4 +5,27 @@
     <color name="main_color">#fecdbe</color>
     <color name="tab_color">#b1ebdf</color>
 
+    <color name="buttonColor1Start">#12f8cb</color>
+    <color name="buttonColor1Middle">#0cd5cd</color>
+    <color name="buttonColor1End">#02b0d2</color>
+
+    <color name="buttonColor2Start">#fb3185</color>
+    <color name="buttonColor2Middle">#f21d57</color>
+    <color name="buttonColor2End">#e1031a</color>
+
+    <color name="buttonColor3Start">#b0f702</color>
+    <color name="buttonColor3Middle">#87e201</color>
+    <color name="buttonColor3End">#4cc602</color>
+
+    <color name="buttonColor4Start">#dab20e</color>
+    <color name="buttonColor4Middle">#dba101</color>
+    <color name="buttonColor4End">#cf6801</color>
+
+    <color name="buttonColor5Start">#cd02d6</color>
+    <color name="buttonColor5Middle">#b201c3</color>
+    <color name="buttonColor5End">#81029a</color>
+
+
+
+
 </resources>

@@ -4,5 +4,161 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_color"
-    tools:context=".HomeActivity"/>
+    android:background="#000000"
+    tools:context=".HomeActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:src="@drawable/coin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="200"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <ImageView
+        android:id="@+id/profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:src="@drawable/profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:src="@drawable/messages"
+        app:layout_constraintEnd_toStartOf="@+id/profile"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:src="@drawable/notification"
+        app:layout_constraintEnd_toStartOf="@+id/message"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <Button
+        android:id="@+id/dailyLesson"
+        android:layout_width="110dp"
+        android:layout_height="80dp"
+        android:background="@drawable/button_bg1"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size"
+        app:backgroundTint="@null"
+        android:drawableLeft="@drawable/daily"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toStartOf="@+id/reading"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Daily Lesson"
+        android:textSize="@dimen/text_size"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/dailyLesson"
+        app:layout_constraintStart_toStartOf="@+id/dailyLesson" />
+
+    <Button
+        android:id="@+id/reading"
+        android:layout_width="110dp"
+        android:layout_height="80dp"
+        android:background="@drawable/button_bg2"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size"
+        android:drawableLeft="@drawable/read"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toStartOf="@+id/writing"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/dailyLesson" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Reading"
+        android:textSize="@dimen/text_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/reading"
+        app:layout_constraintStart_toStartOf="@+id/reading" />
+
+    <Button
+        android:id="@+id/writing"
+        android:layout_width="110dp"
+        android:layout_height="80dp"
+        android:background="@drawable/button_bg3"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size"
+        android:drawableLeft="@drawable/write"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toStartOf="@+id/quiz"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/reading" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Writing"
+        android:textSize="@dimen/text_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/writing"
+        app:layout_constraintStart_toStartOf="@+id/writing" />
+
+    <Button
+        android:id="@+id/quiz"
+        android:layout_width="110dp"
+        android:layout_height="80dp"
+        android:background="@drawable/button_bg4"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size"
+        android:drawableLeft="@drawable/test"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/writing" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Test"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/quiz"
+        app:layout_constraintStart_toStartOf="@+id/quiz" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
