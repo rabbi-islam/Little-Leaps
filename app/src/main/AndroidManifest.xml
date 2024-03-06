@@ -13,8 +13,10 @@
         android:theme="@style/Theme.LittleLeaps"
         tools:targetApi="31">
         <activity
-            android:name=".HomeActivity"
-            android:screenOrientation="landscape"
+            android:name=".SketchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WritingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +24,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".DailyLessonActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false"
+            android:screenOrientation="landscape"></activity>
     </application>
 
 </manifest>
