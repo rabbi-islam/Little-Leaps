@@ -12,11 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LittleLeaps"
         tools:targetApi="31">
-        <activity
-            android:name=".SketchActivity"
-            android:exported="false" />
+
         <activity
             android:name=".WritingActivity"
+            android:screenOrientation="landscape"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

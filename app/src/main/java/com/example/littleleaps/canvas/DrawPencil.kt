@@ -90,6 +90,13 @@ class DrawPencil @JvmOverloads constructor(
 
     fun erase() {
         if (dataPencil.size != 0) {
+            dataPencil.clear()
+            path.reset()
+            invalidate()
+        }
+    }
+    fun undo() {
+        if (dataPencil.size != 0) {
             //dataPencil.removeAt(dataPencil.size - 1)
             dataPencil.clear()
             path.reset()
