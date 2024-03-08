@@ -7,24 +7,30 @@
     tools:context=".WritingActivity">
 
 
-
-
     <RelativeLayout
         android:id="@+id/action"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_height="0dp"
         android:background="@drawable/background_card"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingStart="3dp"
+        android:paddingEnd="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_pallete"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="@null"
+            android:src="@drawable/ic_unselected_palette" />
 
         <ImageButton
             android:id="@+id/btn_pencil"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_below="@id/btn_pallete"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
@@ -33,11 +39,23 @@
             android:src="@drawable/ic_unselected_pencil" />
 
         <ImageButton
-            android:id="@+id/btn_arrow"
+            android:id="@+id/btn_eraser"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_below="@+id/btn_undo"
             android:layout_margin="10dp"
-            android:layout_toEndOf="@+id/btn_pencil"
+            android:background="@null"
+            android:src="@drawable/eraser" />
+
+        <ImageButton
+            android:id="@+id/btn_undo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/btn_pencil"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@null"
             android:src="@drawable/ic_unselected_line" />
 
@@ -45,8 +63,8 @@
             android:id="@+id/btn_rectangle"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_below="@+id/btn_eraser"
             android:layout_margin="10dp"
-            android:layout_toEndOf="@+id/btn_arrow"
             android:background="@null"
             android:src="@drawable/ic_unselected_rectangle" />
 
@@ -54,19 +72,11 @@
             android:id="@+id/btn_ellipse"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_below="@+id/btn_rectangle"
             android:layout_margin="10dp"
-            android:layout_toEndOf="@+id/btn_rectangle"
             android:background="@null"
             android:src="@drawable/ic_unselected_circle" />
 
-        <ImageButton
-            android:id="@+id/btn_pallete"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="10dp"
-            android:layout_toEndOf="@+id/btn_ellipse"
-            android:background="@null"
-            android:src="@drawable/ic_unselected_palette" />
 
     </RelativeLayout>
 
@@ -74,12 +84,10 @@
         android:id="@+id/color_palate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:background="@drawable/background_card"
-        android:padding="4dp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/action"
-        app:layout_constraintTop_toBottomOf="@+id/action">
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/relativeLayout"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/btn_blue"
@@ -122,9 +130,13 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/last_container"
+        app:layout_constraintStart_toEndOf="@+id/action"
         app:layout_constraintTop_toBottomOf="@+id/color_palate">
 
         <com.example.littleleaps.canvas.DrawPencil
@@ -151,13 +163,104 @@
             android:layout_height="match_parent"
             android:visibility="gone" />
 
+
     </RelativeLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/last_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/relativeLayout"
+        app:layout_constraintTop_toBottomOf="@+id/color_palate">
 
 
+        <View
+            android:id="@+id/view"
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/main_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <CheckBox
+                android:id="@+id/checkbox1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Eng(cap)" />
+
+            <CheckBox
+                android:id="@+id/checkbox2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Eng(sm)" />
+
+            <CheckBox
+                android:id="@+id/checkbox3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bangla(vow)" />
+
+            <CheckBox
+                android:id="@+id/checkbox4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bangla(con)" />
 
 
+        </LinearLayout>
 
+
+        <TextView
+            android:id="@+id/previewText"
+            android:layout_width="120dp"
+            android:layout_height="110dp"
+            android:background="@drawable/button_bg1"
+            android:gravity="center"
+            android:text="ক"
+            android:textColor="@color/white"
+            android:textSize="80sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnRandom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Random"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Submit"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnRandom" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
