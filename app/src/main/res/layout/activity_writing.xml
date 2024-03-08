@@ -42,20 +42,23 @@
             android:src="@drawable/ic_unselected_line" />
 
         <ImageButton
-            android:id="@+id/btn_rectangle"
+            android:id="@+id/btn_erase"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_toEndOf="@+id/btn_arrow"
             android:background="@null"
-            android:src="@drawable/ic_unselected_rectangle" />
+            android:src="@drawable/eraser" />
 
         <ImageButton
             android:id="@+id/btn_ellipse"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="10dp"
-            android:layout_toEndOf="@+id/btn_rectangle"
+            android:layout_toEndOf="@+id/btn_erase"
             android:background="@null"
             android:src="@drawable/ic_unselected_circle" />
 
@@ -131,25 +134,11 @@
             android:id="@+id/draw_pencil"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="visible" />
+        />
 
-        <com.example.littleleaps.canvas.DrawLine
-            android:id="@+id/draw_line"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone" />
 
-        <com.example.littleleaps.canvas.DrawRectangle
-            android:id="@+id/draw_rectangle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone" />
 
-        <com.example.littleleaps.canvas.DrawEllipse
-            android:id="@+id/draw_ellipse"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone" />
+
 
     </RelativeLayout>
 

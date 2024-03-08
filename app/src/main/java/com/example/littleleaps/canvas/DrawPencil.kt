@@ -88,9 +88,11 @@ class DrawPencil @JvmOverloads constructor(
         }
     }
 
-    fun undo() {
+    fun erase() {
         if (dataPencil.size != 0) {
-            dataPencil.removeAt(dataPencil.size - 1)
+            //dataPencil.removeAt(dataPencil.size - 1)
+            dataPencil.clear()
+            path.reset()
             invalidate()
         }
     }

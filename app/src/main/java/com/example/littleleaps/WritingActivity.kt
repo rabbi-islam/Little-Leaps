@@ -6,7 +6,9 @@ import android.graphics.Paint
 import android.graphics.Path
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.littleleaps.canvas.DrawPencil
 import com.example.littleleaps.databinding.ActivityWritingBinding
 
 
@@ -35,112 +37,50 @@ class WritingActivity : AppCompatActivity() {
             supportActionBar?.hide()
 
             binding.apply {
+
                 btnPencil.setOnClickListener {
-                    // Untuk mengganti dari false menjadi true
+
                     isPencilIconClicked = !isPencilIconClicked
 
-                    if (isPencilIconClicked) { // ini untuk mengecek apakah isPencilIconClicked sudah true valuenya
+                    if (isPencilIconClicked) {
+
                         btnPencil.setImageResource(com.example.littleleaps.R.drawable.ic_selected_pencil)
                         btnPencil.setBackgroundResource(com.example.littleleaps.R.drawable.background_cards)
 
                         btnArrow.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_line)
                         btnArrow.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                        btnRectangle.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_rectangle)
-                        btnRectangle.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
+                        btnErase.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_rectangle)
+                        btnErase.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
                         btnEllipse.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_circle)
                         btnEllipse.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
                         btnPallete.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_palette)
                         btnPallete.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
 
-                        drawPencil.visibility = View.VISIBLE
-                        drawLine.visibility = View.GONE
-                        drawEllipse.visibility = View.GONE
-                        drawRectangle.visibility = View.GONE
-
-                    } else {
+                    }
+                    else {
                         btnPencil.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_pencil)
                         btnPencil.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
+
                     }
+
+
                 }
 
-                btnArrow.setOnClickListener {
-                    isArrowIconClicked = !isArrowIconClicked
-                    if (isArrowIconClicked) {
-                        btnArrow.setImageResource(com.example.littleleaps.R.drawable.ic_selected_line)
-                        btnArrow.setBackgroundResource(com.example.littleleaps.R.drawable.background_cards)
 
-                        btnPencil.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_pencil)
-                        btnPencil.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                        btnRectangle.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_rectangle)
-                        btnRectangle.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                        btnEllipse.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_circle)
-                        btnEllipse.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                        btnPallete.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_palette)
-                        btnPallete.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
 
-                        drawLine.visibility = View.VISIBLE
-                        drawPencil.visibility = View.GONE
-                        drawEllipse.visibility = View.GONE
-                        drawRectangle.visibility = View.GONE
 
-                    } else {
-                        btnArrow.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_line)
-                        btnArrow.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                    }
-                }
-
-                btnRectangle.setOnClickListener {
+                btnErase.setOnClickListener {
                     isRectangleIconClicked = !isRectangleIconClicked
                     if (isRectangleIconClicked) {
-                        btnRectangle.setImageResource(com.example.littleleaps.R.drawable.ic_selected_rectangle)
-                        btnRectangle.setBackgroundResource(com.example.littleleaps.R.drawable.background_cards)
+                        drawPencil.erase()
 
-                        btnPencil.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_pencil)
-                        btnPencil.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                        btnArrow.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_line)
-                        btnArrow.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                        btnEllipse.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_circle)
-                        btnEllipse.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                        btnPallete.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_palette)
-                        btnPallete.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-
-                        drawRectangle.visibility = View.VISIBLE
-                        drawPencil.visibility = View.GONE
-                        drawLine.visibility = View.GONE
-                        drawEllipse.visibility = View.GONE
 
                     } else {
-                        btnRectangle.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_rectangle)
-                        btnRectangle.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
+                        btnErase.setImageResource(com.example.littleleaps.R.drawable.eraser)
+                        btnErase.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
                     }
                 }
 
-                btnEllipse.setOnClickListener {
-                    isCircleIconClicked = !isCircleIconClicked
-
-                    if (isCircleIconClicked) {
-                        btnEllipse.setImageResource(com.example.littleleaps.R.drawable.ic_selected_circle)
-                        btnEllipse.setBackgroundResource(com.example.littleleaps.R.drawable.background_cards)
-
-                        btnPencil.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_pencil)
-                        btnPencil.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                        btnArrow.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_line)
-                        btnArrow.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                        btnRectangle.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_rectangle)
-                        btnRectangle.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                        btnPallete.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_palette)
-                        btnPallete.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-
-                        drawEllipse.visibility = View.VISIBLE
-                        drawPencil.visibility = View.GONE
-                        drawLine.visibility = View.GONE
-                        drawRectangle.visibility = View.GONE
-
-                    } else {
-                        btnEllipse.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_circle)
-                        btnEllipse.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                    }
-                }
 
                 btnPallete.setOnClickListener {
                     isPaletteIconClicked = !isPaletteIconClicked
@@ -155,8 +95,8 @@ class WritingActivity : AppCompatActivity() {
                         btnPencil.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
                         btnArrow.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_line)
                         btnArrow.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                        btnRectangle.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_rectangle)
-                        btnRectangle.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
+                        btnErase.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_rectangle)
+                        btnErase.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
                         btnEllipse.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_circle)
                         btnEllipse.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
                     } else {
