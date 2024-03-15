@@ -49,4 +49,8 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation ("com.github.denzcoskun:ImageSlideshow:0.1.2")
     implementation ("com.burhanrashid52:photoeditor:3.0.2")
+
+    implementation ("com.google.mlkit:digital-ink-recognition:18.1.0")
+
+    implementation ("io.github.shashank02051997:FancyToast:2.0.2")
 }
