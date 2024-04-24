@@ -21,7 +21,7 @@ object StrokeManager {
     private var inkBuilder = Ink.builder()
     private var strokeBuilder: Ink.Stroke.Builder? = null
     private var mp: MediaPlayer? = null
-
+    private var correctWritingTimes = 0
 
     fun addNewTouchEvent(event: MotionEvent) {
         val x = event.x
@@ -44,39 +44,12 @@ object StrokeManager {
         }
     }
 
-    fun downloadENLang() {
+    fun downloadLang(context: Context,languageName:String) {
         var modelIdentifier: DigitalInkRecognitionModelIdentifier? = null
 
         try {
-            modelIdentifier = DigitalInkRecognitionModelIdentifier.EN
+            modelIdentifier = DigitalInkRecognitionModelIdentifier.fromLanguageTag(languageName)
         } catch (e: Exception) {
-
-        }
-
-        if (modelIdentifier == null) {
-
-        }
-
-        model = DigitalInkRecognitionModel.builder(modelIdentifier!!).build()
-        val remoteModelManager = RemoteModelManager.getInstance()
-        remoteModelManager.download(model!!, DownloadConditions.Builder().build())
-            .addOnSuccessListener {
-
-            }
-            .addOnFailureListener {
-
-            }
-    }
-    fun downloadBNLang() {
-        var modelIdentifier: DigitalInkRecognitionModelIdentifier? = null
-
-        try {
-            modelIdentifier = DigitalInkRecognitionModelIdentifier.BN
-        } catch (e: Exception) {
-
-        }
-
-        if (modelIdentifier == null) {
 
         }
 
@@ -103,15 +76,17 @@ object StrokeManager {
                 val gettext = it.candidates[0].text
                 if (gettext == textView.text) {
                     if (mp == null){
-                    val mp = MediaPlayer.create(context, R.raw.correct)
-                    mp.start()
+                        val mp = MediaPlayer.create(context, R.raw.correct)
+                        mp.start()
                     }
-                    FancyToast.makeText(context, "Matched :)", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, true).show()
+                    correctWritingTimes++
+                    FancyToast.makeText(context, "Matched :)$correctWritingTimes", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, true).show()
                 } else {
                     if (mp == null){
                         val mp = MediaPlayer.create(context, R.raw.wrong)
                         mp.start()
                     }
+                    correctWritingTimes = 0
                     FancyToast.makeText(context, "Not Matched :)", FancyToast.LENGTH_SHORT, FancyToast.ERROR, true).show()
                 }
             }
@@ -119,6 +94,15 @@ object StrokeManager {
 
             }
     }
+
+
+     fun showingShoutOutMessage():String =  when(correctWritingTimes) {
+        2 -> "good"
+        3 -> "Very Good"
+        5 -> "Excellent"
+        else -> ""
+    }
+
 
     fun clear() {
         inkBuilder = Ink.builder()

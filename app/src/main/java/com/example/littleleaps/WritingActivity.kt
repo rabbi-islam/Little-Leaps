@@ -1,6 +1,5 @@
 package com.example.littleleaps
 
-import android.R
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Path
@@ -8,13 +7,16 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.littleleaps.canvas.StrokeManager.clear
-import com.example.littleleaps.canvas.StrokeManager.downloadBNLang
-import com.example.littleleaps.canvas.StrokeManager.downloadENLang
+import com.example.littleleaps.canvas.StrokeManager.downloadLang
 import com.example.littleleaps.canvas.StrokeManager.recognizer
 import com.example.littleleaps.databinding.ActivityWritingBinding
 
 
 class WritingActivity : AppCompatActivity() {
+    private var currentForEngCapIndex = 0
+    private var currentForEngSmIndex = 0
+    private var currentForBanVowelIndex = 0
+    private var currentForBanConsIndex = 0
     private val binding: ActivityWritingBinding by lazy {
         ActivityWritingBinding.inflate(layoutInflater)
     }
@@ -40,8 +42,8 @@ class WritingActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         binding.apply {
-            downloadENLang()
-            downloadBNLang()
+            downloadLang(this@WritingActivity,"en-IN")
+            downloadLang(this@WritingActivity,"bn")
             btnCheck.setOnClickListener {
                 recognizer(this@WritingActivity,previewText)
             }
@@ -50,17 +52,17 @@ class WritingActivity : AppCompatActivity() {
                 isPencilIconClicked = !isPencilIconClicked
 
                 if (isPencilIconClicked) { // ini untuk mengecek apakah isPencilIconClicked sudah true valuenya
-                    btnPencil.setImageResource(com.example.littleleaps.R.drawable.ic_selected_pencil)
-                    btnPencil.setBackgroundResource(com.example.littleleaps.R.drawable.background_cards)
+                    btnPencil.setImageResource(R.drawable.ic_selected_pencil)
+                    btnPencil.setBackgroundResource(R.drawable.background_cards)
 
-                    btnUndo.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_line)
-                    btnUndo.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                    btnRectangle.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_rectangle)
-                    btnRectangle.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                    btnEllipse.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_circle)
-                    btnEllipse.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                    btnPallete.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_palette)
-                    btnPallete.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
+                    btnUndo.setImageResource(R.drawable.ic_unselected_line)
+                    btnUndo.setBackgroundResource(R.drawable.background_card)
+                    btnRectangle.setImageResource(R.drawable.ic_unselected_rectangle)
+                    btnRectangle.setBackgroundResource(R.drawable.background_card)
+                    btnEllipse.setImageResource(R.drawable.ic_unselected_circle)
+                    btnEllipse.setBackgroundResource(R.drawable.background_card)
+                    btnPallete.setImageResource(R.drawable.ic_unselected_palette)
+                    btnPallete.setBackgroundResource(R.drawable.background_card)
 
                     drawPencil.visibility = View.VISIBLE
                     drawLine.visibility = View.GONE
@@ -68,8 +70,8 @@ class WritingActivity : AppCompatActivity() {
                     drawRectangle.visibility = View.GONE
 
                 } else {
-                    btnPencil.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_pencil)
-                    btnPencil.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
+                    btnPencil.setImageResource(R.drawable.ic_unselected_pencil)
+                    btnPencil.setBackgroundResource(R.drawable.background_card)
                 }
             }
 
@@ -81,17 +83,17 @@ class WritingActivity : AppCompatActivity() {
             btnUndo.setOnClickListener {
                 isArrowIconClicked = !isArrowIconClicked
                 if (isArrowIconClicked) {
-                    btnUndo.setImageResource(com.example.littleleaps.R.drawable.ic_selected_line)
-                    btnUndo.setBackgroundResource(com.example.littleleaps.R.drawable.background_cards)
+                    btnUndo.setImageResource(R.drawable.ic_selected_line)
+                    btnUndo.setBackgroundResource(R.drawable.background_cards)
 
-                    btnPencil.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_pencil)
-                    btnPencil.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                    btnRectangle.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_rectangle)
-                    btnRectangle.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                    btnEllipse.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_circle)
-                    btnEllipse.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                    btnPallete.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_palette)
-                    btnPallete.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
+                    btnPencil.setImageResource(R.drawable.ic_unselected_pencil)
+                    btnPencil.setBackgroundResource(R.drawable.background_card)
+                    btnRectangle.setImageResource(R.drawable.ic_unselected_rectangle)
+                    btnRectangle.setBackgroundResource(R.drawable.background_card)
+                    btnEllipse.setImageResource(R.drawable.ic_unselected_circle)
+                    btnEllipse.setBackgroundResource(R.drawable.background_card)
+                    btnPallete.setImageResource(R.drawable.ic_unselected_palette)
+                    btnPallete.setBackgroundResource(R.drawable.background_card)
 
                     drawPencil.visibility = View.VISIBLE
                     drawLine.visibility = View.GONE
@@ -99,8 +101,8 @@ class WritingActivity : AppCompatActivity() {
                     drawRectangle.visibility = View.GONE
 
                 } else {
-                    btnUndo.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_line)
-                    btnUndo.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
+                    btnUndo.setImageResource(R.drawable.ic_unselected_line)
+                    btnUndo.setBackgroundResource(R.drawable.background_card)
                 }
             }
 
@@ -108,16 +110,16 @@ class WritingActivity : AppCompatActivity() {
                 isRectangleIconClicked = !isRectangleIconClicked
                 if (isRectangleIconClicked) {
                     btnRectangle.setImageResource(com.example.littleleaps.R.drawable.ic_selected_rectangle)
-                    btnRectangle.setBackgroundResource(com.example.littleleaps.R.drawable.background_cards)
+                    btnRectangle.setBackgroundResource(R.drawable.background_cards)
 
-                    btnPencil.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_pencil)
-                    btnPencil.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                    btnUndo.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_line)
-                    btnUndo.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                    btnEllipse.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_circle)
-                    btnEllipse.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                    btnPallete.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_palette)
-                    btnPallete.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
+                    btnPencil.setImageResource(R.drawable.ic_unselected_pencil)
+                    btnPencil.setBackgroundResource(R.drawable.background_card)
+                    btnUndo.setImageResource(R.drawable.ic_unselected_line)
+                    btnUndo.setBackgroundResource(R.drawable.background_card)
+                    btnEllipse.setImageResource(R.drawable.ic_unselected_circle)
+                    btnEllipse.setBackgroundResource(R.drawable.background_card)
+                    btnPallete.setImageResource(R.drawable.ic_unselected_palette)
+                    btnPallete.setBackgroundResource(R.drawable.background_card)
 
                     drawRectangle.visibility = View.VISIBLE
                     drawPencil.visibility = View.GONE
@@ -125,8 +127,8 @@ class WritingActivity : AppCompatActivity() {
                     drawEllipse.visibility = View.GONE
 
                 } else {
-                    btnRectangle.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_rectangle)
-                    btnRectangle.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
+                    btnRectangle.setImageResource(R.drawable.ic_unselected_rectangle)
+                    btnRectangle.setBackgroundResource(R.drawable.background_card)
                 }
             }
 
@@ -135,16 +137,16 @@ class WritingActivity : AppCompatActivity() {
 
                 if (isCircleIconClicked) {
                     btnEllipse.setImageResource(com.example.littleleaps.R.drawable.ic_selected_circle)
-                    btnEllipse.setBackgroundResource(com.example.littleleaps.R.drawable.background_cards)
+                    btnEllipse.setBackgroundResource(R.drawable.background_cards)
 
-                    btnPencil.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_pencil)
-                    btnPencil.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                    btnUndo.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_line)
-                    btnUndo.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                    btnRectangle.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_rectangle)
-                    btnRectangle.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                    btnPallete.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_palette)
-                    btnPallete.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
+                    btnPencil.setImageResource(R.drawable.ic_unselected_pencil)
+                    btnPencil.setBackgroundResource(R.drawable.background_card)
+                    btnUndo.setImageResource(R.drawable.ic_unselected_line)
+                    btnUndo.setBackgroundResource(R.drawable.background_card)
+                    btnRectangle.setImageResource(R.drawable.ic_unselected_rectangle)
+                    btnRectangle.setBackgroundResource(R.drawable.background_card)
+                    btnPallete.setImageResource(R.drawable.ic_unselected_palette)
+                    btnPallete.setBackgroundResource(R.drawable.background_card)
 
                     drawEllipse.visibility = View.VISIBLE
                     drawPencil.visibility = View.GONE
@@ -152,8 +154,8 @@ class WritingActivity : AppCompatActivity() {
                     drawRectangle.visibility = View.GONE
 
                 } else {
-                    btnEllipse.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_circle)
-                    btnEllipse.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
+                    btnEllipse.setImageResource(R.drawable.ic_unselected_circle)
+                    btnEllipse.setBackgroundResource(R.drawable.background_card)
                 }
             }
 
@@ -164,19 +166,19 @@ class WritingActivity : AppCompatActivity() {
                     colorPalate.visibility = View.VISIBLE
 
                     btnPallete.setImageResource(com.example.littleleaps.R.drawable.ic_selected_palette)
-                    btnPallete.setBackgroundResource(com.example.littleleaps.R.drawable.background_cards)
+                    btnPallete.setBackgroundResource(R.drawable.background_cards)
 
-                    btnPencil.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_pencil)
-                    btnPencil.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                    btnUndo.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_line)
-                    btnUndo.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                    btnRectangle.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_rectangle)
-                    btnRectangle.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
-                    btnEllipse.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_circle)
-                    btnEllipse.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
+                    btnPencil.setImageResource(R.drawable.ic_unselected_pencil)
+                    btnPencil.setBackgroundResource(R.drawable.background_card)
+                    btnUndo.setImageResource(R.drawable.ic_unselected_line)
+                    btnUndo.setBackgroundResource(R.drawable.background_card)
+                    btnRectangle.setImageResource(R.drawable.ic_unselected_rectangle)
+                    btnRectangle.setBackgroundResource(R.drawable.background_card)
+                    btnEllipse.setImageResource(R.drawable.ic_unselected_circle)
+                    btnEllipse.setBackgroundResource(R.drawable.background_card)
                 } else {
-                    btnPallete.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_palette)
-                    btnPallete.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
+                    btnPallete.setImageResource(R.drawable.ic_unselected_palette)
+                    btnPallete.setBackgroundResource(R.drawable.background_card)
                     colorPalate.visibility = View.INVISIBLE
                 }
             }
@@ -185,46 +187,46 @@ class WritingActivity : AppCompatActivity() {
                 paintBrush.color = resources.getColor(com.example.littleleaps.R.color.google_blue)
                 currentColor(paintBrush.color)
                 colorPalate.visibility = View.INVISIBLE
-                btnPallete.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_palette)
-                btnPallete.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
+                btnPallete.setImageResource(R.drawable.ic_unselected_palette)
+                btnPallete.setBackgroundResource(R.drawable.background_card)
             }
 
             btnRed.setOnClickListener {
                 paintBrush.color = resources.getColor(com.example.littleleaps.R.color.google_red)
                 currentColor(paintBrush.color)
                 colorPalate.visibility = View.INVISIBLE
-                btnPallete.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_palette)
-                btnPallete.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
+                btnPallete.setImageResource(R.drawable.ic_unselected_palette)
+                btnPallete.setBackgroundResource(R.drawable.background_card)
             }
 
             btnYellow.setOnClickListener {
                 paintBrush.color = resources.getColor(com.example.littleleaps.R.color.google_yellow)
                 currentColor(paintBrush.color)
                 colorPalate.visibility = View.INVISIBLE
-                btnPallete.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_palette)
-                btnPallete.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
+                btnPallete.setImageResource(R.drawable.ic_unselected_palette)
+                btnPallete.setBackgroundResource(R.drawable.background_card)
             }
 
             btnGreen.setOnClickListener {
                 paintBrush.color = resources.getColor(com.example.littleleaps.R.color.google_green)
                 currentColor(paintBrush.color)
                 colorPalate.visibility = View.INVISIBLE
-                btnPallete.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_palette)
-                btnPallete.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
+                btnPallete.setImageResource(R.drawable.ic_unselected_palette)
+                btnPallete.setBackgroundResource(R.drawable.background_card)
             }
 
             btnBlack.setOnClickListener {
                 paintBrush.color = Color.BLACK
                 currentColor(paintBrush.color)
                 colorPalate.visibility = View.INVISIBLE
-                btnPallete.setImageResource(com.example.littleleaps.R.drawable.ic_unselected_palette)
-                btnPallete.setBackgroundResource(com.example.littleleaps.R.drawable.background_card)
+                btnPallete.setImageResource(R.drawable.ic_unselected_palette)
+                btnPallete.setBackgroundResource(R.drawable.background_card)
             }
 
-            btnRandom.setOnClickListener {
-                val engCapAlphabet = ('A'..'Z').toList() + ('a'..'z').toList() + (1..10).toList() + ('অ'..'ঔ').toList() + ('ক'..'ৎ').toList() +("১".."১০")
-                previewText.text  = engCapAlphabet.random().toString()
-            }
+//            btnRandom.setOnClickListener {
+//                val engCapAlphabet = ('A'..'Z').toList() + ('a'..'z').toList() + (1..10).toList() + ('অ'..'ঔ').toList() + ('ক'..'ৎ').toList() +("১".."১০")
+//                previewText.text  = engCapAlphabet.random().toString()
+//            }
             val checkboxes = listOf(checkbox1, checkbox2, checkbox3, checkbox4)
 
             for (checkbox in checkboxes) {
@@ -250,12 +252,6 @@ class WritingActivity : AppCompatActivity() {
                 }else{
                     operationForCheckbox4()
                 }
-//                            when (checkbox) {
-//                                checkbox1 -> operationForCheckbox1()
-//                                checkbox2 -> operationForCheckbox2()
-//                                checkbox3 -> operationForCheckbox3()
-//                                checkbox4 -> operationForCheckbox4()
-//                            }
 
             }
 
@@ -264,26 +260,44 @@ class WritingActivity : AppCompatActivity() {
     }
 
     private fun operationForCheckbox4() {
+
         val banConAlphabet = mutableListOf("ক","খ","গ","ঘ","ঙ","চ","ছ","জ","ঝ","ঞ","ট","ঠ","ড","ঢ",
                                             "ণ","ত","থ","দ","ধ","ন","প","ফ","ব","ভ","ম","য","র","ল",
-                                            "শ","ষ","স","হ","ড়","ঢ়","য়","ৎ","ং","ঃ")
-        binding.previewText.text  = banConAlphabet.random()
+                                            "শ","ষ","স","হ","ড়","ঢ়","য়","ৎ","ং")
+        if (currentForBanConsIndex == banConAlphabet.size) {
+            currentForBanConsIndex = 0 // Reset to the beginning of the list
+        }
+        // Set text element serially
+        binding.previewText.text = banConAlphabet[currentForBanConsIndex]
+        currentForBanConsIndex++
+
     }
 
     private fun operationForCheckbox3() {
         val banVowAlphabet = ('অ'..'ঔ').toList()
-        binding.previewText.text  = banVowAlphabet.random().toString()
+        if (currentForBanVowelIndex == banVowAlphabet.size) {
+            currentForBanVowelIndex = 0
+        }
+        binding.previewText.text  = banVowAlphabet[currentForBanVowelIndex].toString()
+        currentForBanVowelIndex++
     }
 
     private fun operationForCheckbox2() {
-        val engCapAlphabet = mutableListOf("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z")
-        binding.previewText.text  = engCapAlphabet.random().lowercase()
+        val engSmAlphabet = mutableListOf("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z")
+        if (currentForEngSmIndex == engSmAlphabet.size) {
+            currentForEngSmIndex = 0
+        }
+        binding.previewText.text = engSmAlphabet[currentForEngSmIndex].lowercase()
+        currentForEngSmIndex++
     }
 
     private fun operationForCheckbox1() {
         val engCapAlphabet = mutableListOf("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z")
-        binding.previewText.text  = engCapAlphabet.random()
-       // val engAlphabet1= ('অ'..'ঔ').toList() + ('ক'..'ৎ').toList()
+        if (currentForEngCapIndex == engCapAlphabet.size) {
+            currentForEngCapIndex = 0
+        }
+        binding.previewText.text = engCapAlphabet[currentForEngCapIndex]
+        currentForEngCapIndex++
     }
 
     private fun currentColor(color: Int) {
