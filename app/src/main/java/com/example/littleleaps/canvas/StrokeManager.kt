@@ -78,6 +78,10 @@ object StrokeManager {
                     if (mp == null){
                         val mp = MediaPlayer.create(context, R.raw.correct)
                         mp.start()
+                        mp.setOnCompletionListener {
+                            mp.stop()
+                            mp.release()
+                        }
                     }
                     correctWritingTimes++
                     FancyToast.makeText(context, "Matched :)$correctWritingTimes", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, true).show()
@@ -85,6 +89,10 @@ object StrokeManager {
                     if (mp == null){
                         val mp = MediaPlayer.create(context, R.raw.wrong)
                         mp.start()
+                        mp.setOnCompletionListener {
+                            mp.stop()
+                            mp.release()
+                        }
                     }
                     correctWritingTimes = 0
                     FancyToast.makeText(context, "Not Matched :)", FancyToast.LENGTH_SHORT, FancyToast.ERROR, true).show()

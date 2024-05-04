@@ -53,4 +53,13 @@ dependencies {
     implementation ("com.google.mlkit:digital-ink-recognition:18.1.0")
 
     implementation ("io.github.shashank02051997:FancyToast:2.0.2")
+    implementation ("androidx.viewpager2:viewpager2:1.0.0")
+    implementation("com.github.leandroborgesferreira:loading-button-android:2.3.0")
+
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-scalars:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+
+    implementation ("com.github.squti:Android-Wave-Recorder:1.7.0")
 }
