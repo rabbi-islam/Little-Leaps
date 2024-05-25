@@ -2,6 +2,7 @@ package com.example.littleleaps
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -23,10 +24,10 @@ class DailyLessonActivity : AppCompatActivity() {
         val list: List<DailyLessonCardModel> = listOf(
             DailyLessonCardModel(R.drawable.alphabet),
             DailyLessonCardModel(R.drawable.numbers),
-            DailyLessonCardModel(R.drawable.alphabet),
+            DailyLessonCardModel(R.drawable.bangla_number),
             DailyLessonCardModel(R.drawable.numbers),
             DailyLessonCardModel(R.drawable.alphabet),
-            DailyLessonCardModel(R.drawable.numbers)
+            DailyLessonCardModel(R.drawable.bangla_number)
         )
         dataAdapter = CardViewAdapter(list)
         //recyclerView.addItemDecoration(ItemDecoration(10))
@@ -60,6 +61,14 @@ class DailyLessonActivity : AppCompatActivity() {
 
 
         })
+
+        dataAdapter.setOnItemClickListener(object : CardViewAdapter.OnItemClickListener {
+            override fun onItemClick(position: Int) {
+                Toast.makeText(this@DailyLessonActivity, "Clicked on item $position", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+
     }
 
 

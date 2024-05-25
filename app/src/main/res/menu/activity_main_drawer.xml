@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/dashboard" />
+        <item
+            android:id="@+id/nav_addChild"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/add_child" />
+        <item
+            android:id="@+id/menu_addContent"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Add Content" />
+
+        <item
+            android:id="@+id/menu_deleteChild"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Delete Child" />
+        <item
+            android:id="@+id/menu_deleteContent"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Delete Content" />
+    </group>
+</menu>

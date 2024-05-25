@@ -55,27 +55,62 @@
         app:layout_constraintEnd_toStartOf="@+id/message"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardView"
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="500dp"
+        android:layout_height="190dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/reading"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/circularProgressBar"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/notification">
 
-        <com.denzcoskun.imageslider.ImageSlider
-            android:id="@+id/image_slider"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:iss_auto_cycle="true"
-            app:iss_corner_radius="10"
-            app:iss_delay="1000"
-            app:iss_period="3000"
-            app:iss_text_align="CENTER" />
-    </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardView"
+            android:layout_width="500dp"
+            android:layout_height="match_parent">
+
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/image_slider"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:iss_auto_cycle="true"
+                app:iss_corner_radius="10"
+                app:iss_delay="1000"
+                app:iss_period="3000"
+                app:iss_text_align="CENTER" />
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </LinearLayout>
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/circularProgressBar"
+        android:layout_width="190dp"
+        android:layout_height="190dp"
+        android:layout_gravity="center_vertical|end"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
+
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/daily_progress"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/circularProgressBar"
+        app:layout_constraintEnd_toEndOf="@+id/circularProgressBar"
+        app:layout_constraintStart_toStartOf="@+id/circularProgressBar"
+        app:layout_constraintTop_toTopOf="@+id/circularProgressBar" />
 
 
 
@@ -84,10 +119,10 @@
         android:layout_width="110dp"
         android:layout_height="80dp"
         android:background="@drawable/button_bg1"
+        android:drawableLeft="@drawable/daily"
         android:textColor="@color/black"
         android:textSize="@dimen/text_size"
         app:backgroundTint="@null"
-        android:drawableLeft="@drawable/daily"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toStartOf="@+id/reading"
         app:layout_constraintHorizontal_bias="0.5"
@@ -97,10 +132,10 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Daily Lesson"
-        android:textSize="@dimen/text_size"
-        android:textColor="@color/white"
         android:layout_marginBottom="12dp"
+        android:text="Daily Lesson"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/dailyLesson"
         app:layout_constraintStart_toStartOf="@+id/dailyLesson" />
@@ -110,9 +145,9 @@
         android:layout_width="110dp"
         android:layout_height="80dp"
         android:background="@drawable/button_bg2"
+        android:drawableLeft="@drawable/read"
         android:textColor="@color/black"
         android:textSize="@dimen/text_size"
-        android:drawableLeft="@drawable/read"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toStartOf="@+id/writing"
@@ -125,8 +160,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
         android:text="Reading"
-        android:textSize="@dimen/text_size"
         android:textColor="@color/white"
+        android:textSize="@dimen/text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/reading"
         app:layout_constraintStart_toStartOf="@+id/reading" />
@@ -136,9 +171,9 @@
         android:layout_width="110dp"
         android:layout_height="80dp"
         android:background="@drawable/button_bg3"
+        android:drawableLeft="@drawable/write"
         android:textColor="@color/black"
         android:textSize="@dimen/text_size"
-        android:drawableLeft="@drawable/write"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toStartOf="@+id/quiz"
@@ -151,8 +186,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
         android:text="Writing"
-        android:textSize="@dimen/text_size"
         android:textColor="@color/white"
+        android:textSize="@dimen/text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/writing"
         app:layout_constraintStart_toStartOf="@+id/writing" />
@@ -162,9 +197,9 @@
         android:layout_width="110dp"
         android:layout_height="80dp"
         android:background="@drawable/button_bg4"
+        android:drawableLeft="@drawable/test"
         android:textColor="@color/black"
         android:textSize="@dimen/text_size"
-        android:drawableLeft="@drawable/test"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"

@@ -30,7 +30,7 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="red">#fb0008</color>
+    <color name="red">#f73e7c</color>
     <color name="green">#007f00</color>
     <color name="blue">#0078de</color>
     <color name="google_blue">#4282ef</color>
@@ -39,11 +39,13 @@
     <color name="google_green">#33a453</color>
     <color name="background_selected_icon">#e4e4e4</color>
     <color name="unselected_icon">#747474</color>
-    <color name="speakBtnColor">#ffa000</color>D
-    <color name="speakBtnColor2">#7bced4</color>D
-
-
-
+    <color name="speakBtnColor">#ffa000</color>
+    <color name="speakBtnColor2">#7bced4</color>
+    <color name="green1">#00bfa5</color>
+    <color name="red1">#c61b1b</color>
+    <color name="pink">#d242ec</color>
+    <color name="textColor">#0A0A0A</color>
+    <color name="textHeading">#008eff</color>
 
 
 </resources>

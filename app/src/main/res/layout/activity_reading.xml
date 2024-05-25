@@ -17,7 +17,7 @@
         android:layout_marginTop="20dp"
         android:src="@drawable/previous"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <!--    <LinearLayout-->
     <!--        android:layout_width="400dp"-->
@@ -121,6 +121,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="check"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -129,6 +130,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Play"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/speakBtn" />
 
@@ -137,6 +139,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rabbi"
+        android:visibility="gone"
         android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@+id/testingbutton"
         app:layout_constraintStart_toStartOf="parent"
