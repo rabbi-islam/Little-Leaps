@@ -5,6 +5,7 @@ import android.graphics.Paint
 import android.graphics.Path
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.littleleaps.canvas.StrokeManager.clear
 import com.example.littleleaps.canvas.StrokeManager.downloadLang
@@ -13,6 +14,7 @@ import com.example.littleleaps.databinding.ActivityWritingBinding
 
 
 class WritingActivity : AppCompatActivity() {
+    private var toast: Toast? = null
     private var currentForEngCapIndex = 0
     private var currentForEngSmIndex = 0
     private var currentForBanVowelIndex = 0
@@ -51,7 +53,7 @@ class WritingActivity : AppCompatActivity() {
                 // Untuk mengganti dari false menjadi true
                 isPencilIconClicked = !isPencilIconClicked
 
-                if (isPencilIconClicked) { // ini untuk mengecek apakah isPencilIconClicked sudah true valuenya
+                if (isPencilIconClicked) {
                     btnPencil.setImageResource(R.drawable.ic_selected_pencil)
                     btnPencil.setBackgroundResource(R.drawable.background_cards)
 
@@ -192,7 +194,7 @@ class WritingActivity : AppCompatActivity() {
             }
 
             btnRed.setOnClickListener {
-                paintBrush.color = resources.getColor(com.example.littleleaps.R.color.google_red)
+                paintBrush.color = resources.getColor(R.color.google_red)
                 currentColor(paintBrush.color)
                 colorPalate.visibility = View.INVISIBLE
                 btnPallete.setImageResource(R.drawable.ic_unselected_palette)
@@ -200,7 +202,7 @@ class WritingActivity : AppCompatActivity() {
             }
 
             btnYellow.setOnClickListener {
-                paintBrush.color = resources.getColor(com.example.littleleaps.R.color.google_yellow)
+                paintBrush.color = resources.getColor(R.color.google_yellow)
                 currentColor(paintBrush.color)
                 colorPalate.visibility = View.INVISIBLE
                 btnPallete.setImageResource(R.drawable.ic_unselected_palette)
@@ -208,7 +210,7 @@ class WritingActivity : AppCompatActivity() {
             }
 
             btnGreen.setOnClickListener {
-                paintBrush.color = resources.getColor(com.example.littleleaps.R.color.google_green)
+                paintBrush.color = resources.getColor(R.color.google_green)
                 currentColor(paintBrush.color)
                 colorPalate.visibility = View.INVISIBLE
                 btnPallete.setImageResource(R.drawable.ic_unselected_palette)
@@ -257,7 +259,11 @@ class WritingActivity : AppCompatActivity() {
 
 
         }
+        binding.checkbox1.isChecked = true
+
     }
+
+
 
     private fun operationForCheckbox4() {
 

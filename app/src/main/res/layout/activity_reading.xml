@@ -10,7 +10,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/backBtn"
         android:layout_width="38dp"
         android:layout_height="38dp"
         android:layout_marginStart="20dp"
@@ -143,7 +143,7 @@
         android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@+id/testingbutton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/backBtn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.littleleaps
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -7,14 +8,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.littleleaps.adapter.CardViewAdapter
+import com.example.littleleaps.databinding.ActivityDailyLessonBinding
+import com.example.littleleaps.databinding.ActivityRegistrationBinding
 import com.example.littleleaps.model.DailyLessonCardModel
 
 class DailyLessonActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var dataAdapter: CardViewAdapter
+
+    private val binding: ActivityDailyLessonBinding by lazy {
+        ActivityDailyLessonBinding.inflate(layoutInflater)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_daily_lesson)
+        setContentView(binding.root)
 
         recyclerView = findViewById(R.id.cardRecycler)
         recyclerView.setHasFixedSize(true)
@@ -68,6 +75,9 @@ class DailyLessonActivity : AppCompatActivity() {
             }
         })
 
+        binding.backBtn.setOnClickListener {
+            startActivity(Intent(this,HomeActivity::class.java))
+        }
 
     }
 

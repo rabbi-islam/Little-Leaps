@@ -2,6 +2,7 @@ package com.example.littleleaps
 
 import android.Manifest
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.graphics.Color
@@ -82,6 +83,10 @@ class ReadingActivity : AppCompatActivity() {
 //        binding.testingbutton.setOnClickListener {
 //            sendAudioFile()
 //        }
+
+        binding.backBtn.setOnClickListener {
+            startActivity(Intent(this,HomeActivity::class.java))
+        }
 
 
     }

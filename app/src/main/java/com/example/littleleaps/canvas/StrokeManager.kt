@@ -17,6 +17,7 @@ import com.shashank.sony.fancytoastlib.FancyToast
 
 object StrokeManager {
 
+    private var toast: Toast? = null
     private var model: DigitalInkRecognitionModel? = null
     private var inkBuilder = Ink.builder()
     private var strokeBuilder: Ink.Stroke.Builder? = null
@@ -84,7 +85,7 @@ object StrokeManager {
                         }
                     }
                     correctWritingTimes++
-                    FancyToast.makeText(context, "Matched :)$correctWritingTimes", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, true).show()
+                    showToast(context,"Matched :)",FancyToast.SUCCESS)
                 } else {
                     if (mp == null){
                         val mp = MediaPlayer.create(context, R.raw.wrong)
@@ -95,7 +96,7 @@ object StrokeManager {
                         }
                     }
                     correctWritingTimes = 0
-                    FancyToast.makeText(context, "Not Matched :)", FancyToast.LENGTH_SHORT, FancyToast.ERROR, true).show()
+                    showToast(context,"Not Matched :)",FancyToast.ERROR)
                 }
             }
             .addOnFailureListener {
@@ -114,5 +115,15 @@ object StrokeManager {
 
     fun clear() {
         inkBuilder = Ink.builder()
+    }
+
+    private fun showToast(context: Context,msg:String, toastType:Int) {
+        // Cancel the previous toast if it's still visible
+        toast?.cancel()
+
+        // Create and show the new toast message
+        toast = Toast.makeText(context, msg, Toast.LENGTH_SHORT)
+        toast = FancyToast.makeText(context, msg + correctWritingTimes, FancyToast.LENGTH_SHORT,toastType , true)
+        toast?.show()
     }
 }
